@@ -41,8 +41,7 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))',
-					glow: 'hsl(var(--primary-glow))'
+					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -70,24 +69,20 @@ export default {
 				}
 			},
 			backgroundImage: {
-				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-hero': 'var(--gradient-hero)',
-				'gradient-subtle': 'var(--gradient-subtle)',
-				'gradient-glass': 'var(--gradient-glass)',
+				'gradient-primary': 'linear-gradient(135deg, hsl(217, 91%, 60%), hsl(217, 91%, 70%))',
+				'gradient-hero': 'linear-gradient(135deg, hsl(217, 91%, 60%) 0%, hsl(142, 76%, 36%) 100%)',
+				'gradient-subtle': 'linear-gradient(180deg, hsl(0, 0%, 99%) 0%, hsl(210, 17%, 98%) 100%)',
 			},
 			boxShadow: {
-				'sm': 'var(--shadow-sm)',
-				'md': 'var(--shadow-md)',
-				'lg': 'var(--shadow-lg)',
-				'glow': 'var(--shadow-glow)',
+				'sm': '0 2px 4px -2px hsl(217 91% 60% / 0.1)',
+				'md': '0 8px 25px -5px hsl(217 91% 60% / 0.1), 0 4px 10px -6px hsl(217 91% 60% / 0.1)',
+				'lg': '0 25px 50px -12px hsl(217 91% 60% / 0.25)',
+				'glow': '0 0 40px hsl(217 91% 60% / 0.15)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
-			},
-			backdropBlur: {
-				'glass': 'var(--glass-blur)',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -133,7 +128,6 @@ export default {
 				'float': 'float 3s ease-in-out infinite',
 				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
 			}
-		}
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
