@@ -18,6 +18,7 @@ const Footer = () => {
       title: 'Company',
       links: [
         { name: 'About Us', href: '/about' },
+        { name: 'Why We Build', href: '/why-we-build' },
         { name: 'Press & Media', href: '/press' },
         { name: 'Contact', href: '/contact' },
         { name: 'Blog', href: '/blog' }
@@ -26,9 +27,6 @@ const Footer = () => {
     {
       title: 'Resources',
       links: [
-        { name: 'Documentation', href: '#' },
-        { name: 'Support Center', href: '#' },
-        { name: 'API Reference', href: '#' },
         { name: 'Status Page', href: '#' }
       ]
     },

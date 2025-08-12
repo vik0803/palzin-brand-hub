@@ -34,14 +34,13 @@ const Navigation = () => {
 
   const company = [
     { name: 'About Us', href: '/about' },
+    { name: 'Why We Build', href: '/why-we-build' },
     { name: 'Press & Media', href: '/press' },
     { name: 'Contact', href: '/contact' }
   ];
 
   const resources = [
-    { name: 'Blog & Insights', href: '/blog' },
-    { name: 'Documentation', href: '#' },
-    { name: 'Support Center', href: '#' }
+    { name: 'Blog & Insights', href: '/blog' }
   ];
 
   return (
