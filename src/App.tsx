@@ -12,6 +12,7 @@ import PalzinFeedback from "./pages/PalzinFeedback";
 import Press from "./pages/Press";
 import Contact from "./pages/Contact";
 import WhyWeBuild from "./pages/WhyWeBuild";
+import GetStarted from "./pages/GetStarted";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
@@ -34,9 +35,10 @@ const App = () => (
           <Route path="/palzin-track" element={<PalzinTrack />} />
           <Route path="/palzin-monitor" element={<PalzinMonitor />} />
           <Route path="/palzin-feedback" element={<PalzinFeedback />} />
-          <Route path="/press" element={<Press />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/why-we-build" element={<WhyWeBuild />} />
+        <Route path="/press" element={<Press />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/why-we-build" element={<WhyWeBuild />} />
+        <Route path="/get-started" element={<GetStarted />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
