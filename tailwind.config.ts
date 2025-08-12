@@ -69,15 +69,15 @@ export default {
 				}
 			},
 			backgroundImage: {
-				'gradient-primary': 'linear-gradient(135deg, hsl(217, 91%, 60%), hsl(217, 91%, 70%))',
-				'gradient-hero': 'linear-gradient(135deg, hsl(217, 91%, 60%) 0%, hsl(142, 76%, 36%) 100%)',
+				'gradient-primary': 'linear-gradient(135deg, hsl(205, 100%, 47%), hsl(205, 100%, 57%))',
+				'gradient-hero': 'linear-gradient(135deg, hsl(205, 100%, 47%) 0%, hsl(142, 76%, 36%) 100%)',
 				'gradient-subtle': 'linear-gradient(180deg, hsl(0, 0%, 99%) 0%, hsl(210, 17%, 98%) 100%)',
 			},
 			boxShadow: {
-				'sm': '0 2px 4px -2px hsl(217 91% 60% / 0.1)',
-				'md': '0 8px 25px -5px hsl(217 91% 60% / 0.1), 0 4px 10px -6px hsl(217 91% 60% / 0.1)',
-				'lg': '0 25px 50px -12px hsl(217 91% 60% / 0.25)',
-				'glow': '0 0 40px hsl(217 91% 60% / 0.15)',
+				'sm': '0 2px 4px -2px hsl(205 100% 47% / 0.1)',
+				'md': '0 8px 25px -5px hsl(205 100% 47% / 0.1), 0 4px 10px -6px hsl(205 100% 47% / 0.1)',
+				'lg': '0 25px 50px -12px hsl(205 100% 47% / 0.25)',
+				'glow': '0 0 40px hsl(205 100% 47% / 0.15)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -114,8 +114,8 @@ export default {
 					'50%': { transform: 'translateY(-10px)' }
 				},
 				'pulse-glow': {
-					'0%, 100%': { boxShadow: '0 0 20px hsl(217 91% 60% / 0.3)' },
-					'50%': { boxShadow: '0 0 40px hsl(217 91% 60% / 0.6)' }
+					'0%, 100%': { boxShadow: '0 0 20px hsl(205 100% 47% / 0.3)' },
+					'50%': { boxShadow: '0 0 40px hsl(205 100% 47% / 0.6)' }
 				}
 			},
 			animation: {
