@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -39,33 +39,27 @@ export default function GetStarted() {
   // Error state
   const [errors, setErrors] = useState<any>({});
 
-  const handleProductToggle = (productId: string) => {
+  const handleProductToggle = useCallback((productId: string) => {
     setSelectedProducts(prev => 
       prev.includes(productId) 
         ? prev.filter(id => id !== productId)
         : [...prev, productId]
     );
     // Clear error when user selects products
-    if (errors.products) {
-      setErrors(prev => ({ ...prev, products: undefined }));
-    }
-  };
+    setErrors(prev => prev.products ? { ...prev, products: undefined } : prev);
+  }, []);
 
-  const handleUserInfoChange = (field: string, value: string) => {
+  const handleUserInfoChange = useCallback((field: string, value: string) => {
     setUserInfo(prev => ({ ...prev, [field]: value }));
     // Clear error when user types
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: undefined }));
-    }
-  };
+    setErrors(prev => prev[field] ? { ...prev, [field]: undefined } : prev);
+  }, []);
 
-  const handleMeetingChange = (field: string, value: Date | string) => {
+  const handleMeetingChange = useCallback((field: string, value: Date | string) => {
     setMeetingInfo(prev => ({ ...prev, [field]: value }));
     // Clear error when user selects
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: undefined }));
-    }
-  };
+    setErrors(prev => prev[field] ? { ...prev, [field]: undefined } : prev);
+  }, []);
 
   const validateStep = (step: number) => {
     const newErrors: any = {};
@@ -109,18 +103,18 @@ export default function GetStarted() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const nextStep = () => {
+  const nextStep = useCallback(() => {
     if (validateStep(currentStep)) {
       setCurrentStep(prev => prev + 1);
     }
-  };
+  }, [currentStep, selectedProducts, problem, userInfo, meetingInfo]);
 
-  const prevStep = () => {
+  const prevStep = useCallback(() => {
     setCurrentStep(prev => prev - 1);
     setErrors({}); // Clear errors when going back
-  };
+  }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     if (validateStep(4)) {
       // Handle form submission
@@ -134,7 +128,7 @@ export default function GetStarted() {
       console.log("Form submitted:", formData);
       setCurrentStep(5);
     }
-  };
+  }, [selectedProducts, problem, userInfo, meetingInfo]);
 
   return (
     <div className="min-h-screen bg-gradient-subtle flex items-center justify-center p-4">
