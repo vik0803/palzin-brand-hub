@@ -48,7 +48,6 @@ const timeSlots = [
 
 export default function GetStarted() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -73,10 +72,8 @@ export default function GetStarted() {
     
     switch (currentStep) {
       case 1:
-        isValid = selectedProducts.length > 0;
-        if (isValid) {
-          form.setValue("products", selectedProducts);
-        }
+        const currentProducts = form.getValues("products");
+        isValid = currentProducts.length > 0;
         break;
       case 2:
         isValid = await form.trigger("problem");
@@ -99,11 +96,12 @@ export default function GetStarted() {
   };
 
   const handleProductToggle = (productId: string) => {
-    setSelectedProducts(prev => 
-      prev.includes(productId) 
-        ? prev.filter(id => id !== productId)
-        : [...prev, productId]
-    );
+    const currentProducts = form.getValues("products");
+    const newProducts = currentProducts.includes(productId) 
+      ? currentProducts.filter(id => id !== productId)
+      : [...currentProducts, productId];
+    
+    form.setValue("products", newProducts);
   };
 
   const StepIndicator = () => (
@@ -160,13 +158,13 @@ export default function GetStarted() {
                     <p className="text-muted-foreground">Select all that apply</p>
                   </div>
                   
-                  <div className="grid gap-4">
+                   <div className="grid gap-4">
                     {products.map((product) => (
                       <div
                         key={product.id}
                         className={cn(
                           "p-4 border rounded-lg cursor-pointer transition-all hover:shadow-md",
-                          selectedProducts.includes(product.id)
+                          form.watch("products").includes(product.id)
                             ? "border-primary bg-primary/5"
                             : "border-border hover:border-primary/50"
                         )}
@@ -174,8 +172,8 @@ export default function GetStarted() {
                       >
                         <div className="flex items-start space-x-3">
                           <Checkbox
-                            checked={selectedProducts.includes(product.id)}
-                            className="mt-1"
+                            checked={form.watch("products").includes(product.id)}
+                            className="mt-1 pointer-events-none"
                           />
                           <div>
                             <h3 className="font-medium">{product.name}</h3>
@@ -184,11 +182,11 @@ export default function GetStarted() {
                         </div>
                       </div>
                     ))}
-                  </div>
-                  
-                  {selectedProducts.length === 0 && (
-                    <p className="text-sm text-destructive text-center">Please select at least one product</p>
-                  )}
+                   </div>
+                   
+                   {form.watch("products").length === 0 && (
+                     <p className="text-sm text-destructive text-center">Please select at least one product</p>
+                   )}
                 </div>
               )}
 
