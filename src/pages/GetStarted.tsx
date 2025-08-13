@@ -181,7 +181,6 @@ export default function GetStarted() {
                           <Checkbox
                             checked={watchedProducts?.includes(product.id) || false}
                             className="mt-1 pointer-events-none"
-                            readOnly
                           />
                           <div>
                             <h3 className="font-medium">{product.name}</h3>
