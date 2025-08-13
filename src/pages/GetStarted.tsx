@@ -315,12 +315,11 @@ export default function GetStarted() {
                           <Calendar
                             mode="single"
                             selected={form.watch("meetingDate")}
-                            onSelect={(date) => form.setValue("meetingDate", date!)}
+                            onSelect={(date) => date && form.setValue("meetingDate", date)}
                             disabled={(date) =>
                               date < new Date() || date < new Date("1900-01-01")
                             }
                             initialFocus
-                            className="pointer-events-auto"
                           />
                         </PopoverContent>
                       </Popover>

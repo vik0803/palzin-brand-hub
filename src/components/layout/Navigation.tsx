@@ -133,9 +133,11 @@ const Navigation = () => {
             </NavigationMenu>
 
             {/* CTA Button */}
-            <Button className="bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105">
-              Get Started
-            </Button>
+            <Link to="/get-started">
+              <Button className="bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105">
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -197,9 +199,11 @@ const Navigation = () => {
               </div>
 
               <div className="pt-4">
-                <Button className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300">
-                  Get Started
-                </Button>
+                <Link to="/get-started" onClick={() => setIsOpen(false)}>
+                  <Button className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300">
+                    Get Started
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
