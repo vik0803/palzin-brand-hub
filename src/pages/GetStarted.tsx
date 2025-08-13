@@ -1,5 +1,6 @@
+
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { format } from "date-fns";
@@ -60,6 +61,12 @@ export default function GetStarted() {
       industry: "",
       meetingTime: "",
     },
+  });
+
+  // Use useWatch to properly subscribe to form changes
+  const watchedProducts = useWatch({
+    control: form.control,
+    name: "products",
   });
 
   const onSubmit = (data: FormData) => {
@@ -164,7 +171,7 @@ export default function GetStarted() {
                         key={product.id}
                         className={cn(
                           "p-4 border rounded-lg cursor-pointer transition-all hover:shadow-md",
-                          form.watch("products").includes(product.id)
+                          watchedProducts?.includes(product.id)
                             ? "border-primary bg-primary/5"
                             : "border-border hover:border-primary/50"
                         )}
@@ -172,8 +179,9 @@ export default function GetStarted() {
                       >
                         <div className="flex items-start space-x-3">
                           <Checkbox
-                            checked={form.watch("products").includes(product.id)}
+                            checked={watchedProducts?.includes(product.id) || false}
                             className="mt-1 pointer-events-none"
+                            readOnly
                           />
                           <div>
                             <h3 className="font-medium">{product.name}</h3>
@@ -184,7 +192,7 @@ export default function GetStarted() {
                     ))}
                    </div>
                    
-                   {form.watch("products").length === 0 && (
+                   {(!watchedProducts || watchedProducts.length === 0) && (
                      <p className="text-sm text-destructive text-center">Please select at least one product</p>
                    )}
                 </div>
